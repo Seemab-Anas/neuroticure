@@ -144,10 +144,10 @@ export default function ContactUs() {
                 CONTACT US
               </div>
               <h1 className="text-4xl md:text-5xl font-normal tracking-tighter mb-2 text-[#17181D]">
-                Have Any Questions? Don't Hesitate to Reach Us
+                Have Any Questions? Don&#39;t Hesitate to Reach Us
               </h1>
               <p className="max-w-2xl mx-auto text-xl text-[#17181D]/70 tracking-tighter">
-                We're here to help and answer any question you might have. 
+                We&#39;re here to help and answer any question you might have. 
                 We look forward to hearing from you and will respond as soon as possible.
               </p>
             </div>
