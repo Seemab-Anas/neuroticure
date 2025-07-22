@@ -1,6 +1,8 @@
 import { Open_Sans } from 'next/font/google'
 import "./globals.css";
 import SmoothScroll from '@/components/SmoothScroll';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -20,7 +22,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={openSans.variable}>
       <body className="font-sans" style={{ backgroundColor: '#D5CEBC', fontFamily: 'var(--font-open-sans)' }}>
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

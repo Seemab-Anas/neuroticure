@@ -18,19 +18,19 @@ export default function Navbar() {
           </Link>
           <div className="hidden md:flex items-center ml-[100px] space-x-2">
             <Link 
-              href="#features" 
+              href="/AboutUs" 
               className="w-[86px] h-10 flex items-center justify-center text-base tracking-tighter text-[#F4F3F0] font-normal leading-6 rounded-[24px] hover:bg-[#ffffff09] transition-colors"
             >
               About Us
             </Link>
             <Link 
-              href="#pricing" 
+              href="/pricing" 
               className="w-[86px] h-10 flex items-center justify-center text-base tracking-tighter text-[#F4F3F0] font-normal leading-6 rounded-[24px] hover:bg-[#ffffff09] transition-colors"
             >
               Pricing
             </Link>
             <Link 
-              href="#blog" 
+              href="/contactUs" 
               className="w-[86px] h-10 flex items-center justify-center text-base tracking-tighter text-[#F4F3F0] font-normal leading-6 rounded-[24px] hover:bg-[#ffffff09] transition-colors"
             >
               Contact Us
