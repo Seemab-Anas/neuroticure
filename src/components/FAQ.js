@@ -175,7 +175,7 @@ const FAQ = () => {
                   </div>
                   <div>
                     <p className="text-[rgb(244,243,240)]">
-                      I've never understood my sleep patterns this clearly before.
+                      I&#39;ve never understood my sleep patterns this clearly before.
                     </p>
                     <p className="text-[rgb(205,172,103)]">
                       Ava Sinclair
