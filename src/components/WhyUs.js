@@ -34,10 +34,10 @@ export default function WhyUs() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 py-20 w-full">
         {/* Title Section */}
         <div className="text-center mb-20">
-          <div className="inline-block px-4 py-1 rounded-full bg-[#17181D] text-[#CDAC67] text-sm tracking-tighter mb-4">
+          <div className="inline-block px-4 py-1 rounded-full bg-[#17181D] text-[#CDAC67] text-lg tracking-tighter mb-4">
             WHY CHOOSE US
           </div>
-          <h2 className="text-4xl md:text-5xl font-normal tracking-tighter mb-6 text-[#17181D]">
+          <h2 className="text-4xl md:text-5xl font-normal tracking-tighter mb-2 text-[#17181D]">
             The Science of Better Sleep
           </h2>
           <p className="max-w-2xl mx-auto text-xl text-[#17181D]/70 tracking-tighter">

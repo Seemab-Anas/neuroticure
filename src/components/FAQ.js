@@ -1,27 +1,96 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const answerRef = useRef(null);
+  const iconRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    // Set initial state for answer content
+    if (answerRef.current) {
+      gsap.set(answerRef.current, {
+        height: 0,
+        opacity: 0,
+        overflow: 'hidden'
+      });
+    }
+  }, []);
+
+  const toggleFAQ = () => {
+    const newState = !isOpen;
+    setIsOpen(newState);
+
+    // Create GSAP timeline for smooth animations
+    const tl = gsap.timeline();
+
+    if (newState) {
+      // Opening animation
+      tl.to(iconRef.current, {
+        rotation: 45,
+        duration: 0.3,
+        ease: "power2.out"
+      })
+      .to(cardRef.current, {
+        backgroundColor: "rgb(220, 215, 200)", // Slightly darker when open
+        duration: 0.2,
+        ease: "power2.out"
+      }, 0)
+      .to(answerRef.current, {
+        height: "auto",
+        duration: 0.4,
+        ease: "power2.out"
+      }, 0.1)
+      .to(answerRef.current, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      }, 0.2);
+    } else {
+      // Closing animation
+      tl.to(answerRef.current, {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in"
+      })
+      .to(answerRef.current, {
+        height: 0,
+        duration: 0.3,
+        ease: "power2.in"
+      }, 0.1)
+      .to(iconRef.current, {
+        rotation: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      }, 0)
+      .to(cardRef.current, {
+        backgroundColor: "rgb(228, 225, 214)", // Back to original color
+        duration: 0.2,
+        ease: "power2.out"
+      }, 0);
+    }
+  };
 
   return (
     <div 
-      className="bg-[rgb(228,225,214)] rounded-[40px] shadow-lg cursor-pointer mb-4"
-      onClick={() => setIsOpen(!isOpen)}
+      ref={cardRef}
+      className="bg-[rgb(228,225,214)] rounded-[40px] shadow-lg cursor-pointer mb-4 hover:shadow-xl transition-shadow duration-300"
+      onClick={toggleFAQ}
       tabIndex="0"
       data-highlight="true"
       style={{
         width: '419.986px',
         minHeight: '80px',
-        boxShadow: "rgba(0, 0, 0, 0.03) 0px 0.602187px 1.80656px -0.25px, rgba(0, 0, 0, 0.05) 0px 2.28853px 6.8656px -0.5px, rgba(0, 0, 0, 0.13) 0px 10px 30px -0.75px",
-        transition: 'all 0.3s ease-in-out'
+        boxShadow: "rgba(0, 0, 0, 0.03) 0px 0.602187px 1.80656px -0.25px, rgba(0, 0, 0, 0.05) 0px 2.28853px 6.8656px -0.5px, rgba(0, 0, 0, 0.13) 0px 10px 30px -0.75px"
       }}
     >
       <div className="p-6 flex flex-col h-full">
         <div className="flex items-center">
           <div className="mr-5">
-            <div className={`transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
+            <div ref={iconRef}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[rgb(23,24,29)]">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -32,11 +101,11 @@ const FAQItem = ({ question, answer }) => {
             {question}
           </div>
         </div>
-        {isOpen && (
+        <div ref={answerRef} className="overflow-hidden">
           <div className="mt-5 pl-11 text-[rgba(23,24,29,0.7)] text-base pr-4">
             {answer}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
@@ -70,7 +139,7 @@ const FAQ = () => {
             <div className="bg-[rgb(40,41,46)] h-auto rounded-[40px] inline-block px-6 py-2 mb-4">
               <p className="text-[rgb(205,172,103)]">FAQ</p>
             </div>
-            <h2 className="text-4xl font-bold mb-4 text-left text-[rgb(23,24,29)]">
+            <h2 className="text-4xl font-medium mb-4 text-left text-[rgb(23,24,29)]">
               Got Questions? <br /> We've Got Answers
             </h2>
             <p className="text-[rgba(23,24,29,0.7)] text-xl mb-8 text-left font-['Open_Sans']" style={{ letterSpacing: '-0.02em', lineHeight: '28px' }}>

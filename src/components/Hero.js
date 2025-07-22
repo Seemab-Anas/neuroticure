@@ -1,5 +1,4 @@
 import UserStats from './UserStats';
-import FloatingCards from './FloatingCards';
 
 export default function Hero() {
   return (

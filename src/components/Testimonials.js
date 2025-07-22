@@ -74,7 +74,6 @@ export default function Testimonials() {
   useEffect(() => {
     // Wait for the DOM to be fully rendered
     setTimeout(() => {
-      // Create infinite scrolling effect for first row (right to left)
       const firstRowWidth = firstRowRef.current.scrollWidth;
       const firstRowAnimation = gsap.timeline({
         scrollTrigger: {
@@ -147,11 +146,11 @@ export default function Testimonials() {
         {/* Header section */}
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-20">
-            <div className="inline-flex items-center justify-center px-4 py-1 rounded-full bg-[#28292E] text-[#CDAC67] text-sm mb-8">
+            <div className="inline-flex items-center justify-center px-4 py-1 rounded-full bg-[#28292E] text-[#CDAC67] text-lg mb-8">
               TESTIMONIALS
             </div>
             
-            <h2 className="text-4xl md:text-5xl text-center font-normal tracking-[-0.02em] text-[#17181D] mb-6 max-w-3xl flex items-center justify-center flex-wrap gap-2">
+            <h2 className="text-4xl md:text-5xl text-center font-normal tracking-[-0.02em] text-[#17181D] mb-2 max-w-3xl flex items-center justify-center flex-wrap gap-2">
               From the Mouths of Happy Users
               <span className="inline-flex relative mx-2">
                 <div className="flex items-center relative">
@@ -216,7 +215,7 @@ export default function Testimonials() {
             ))}
           </div>
           
-          <div ref={secondRowRef} className="flex gap-8 w-max" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
+          <div ref={secondRowRef} className="flex gap-8 pb-8 w-max" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
             {/* Triple the testimonials to ensure infinite scrolling */}
             {repeatedSecondRow.map((testimonial, index) => (
               <div
