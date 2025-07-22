@@ -140,7 +140,7 @@ const FAQ = () => {
               <p className="text-[rgb(205,172,103)]">FAQ</p>
             </div>
             <h2 className="text-4xl font-medium mb-4 text-left text-[rgb(23,24,29)]">
-              Got Questions? <br /> We've Got Answers
+              Got Questions? <br /> We&#39;ve Got Answers
             </h2>
             <p className="text-[rgba(23,24,29,0.7)] text-xl mb-8 text-left font-['Open_Sans']" style={{ letterSpacing: '-0.02em', lineHeight: '28px' }}>
               Explore common questions about AuraPod
