@@ -114,22 +114,23 @@ const FAQItem = ({ question, answer }) => {
 const FAQ = () => {
   const faqItems = [
     {
-      question: "How does AuraPod help me sleep better?",
-      answer: "AuraPod uses advanced sound technology to create a personalized audio environment that adapts to your sleep patterns. Our AI-driven system monitors your sleep stages and adjusts sounds in real-time to promote deeper, more restful sleep."
+      question: "What is Neuroticure and how does it work?",
+      answer: "Neuroticure is a mental‑health platform that combines AI‑powered assessments, personalized therapeutic exercises, and access to licensed professionals. Our AI quickly analyzes your responses and sleep/mood tracking data to recommend tailored self‑help activities and, if needed, connect you with a certified therapist."
     },
     {
-      question: "Is AuraPod compatible with my existing devices?",
-      answer: "Yes, AuraPod is designed to work seamlessly with most smartphones, tablets, and smart home systems. Our app is available for both iOS and Android, and integrates with popular platforms like Apple HomeKit, Google Home, and Amazon Alexa."
+      question: "Do I need any special equipment to use Neuroticure?",
+      answer: "No extra hardware is required. You can use Neuroticure on any modern smartphone or tablet (iOS 13+ or Android 8+). For sleep or mood tracking, you can manually log entries or sync data from popular wearables like Fitbit or Apple Watch."
     },
     {
-      question: "How long does the battery last?",
-      answer: "AuraPod features an energy-efficient design with a battery life of up to 10 hours on a single charge. The included fast-charging technology allows you to fully recharge in just 90 minutes."
+      question: "What kind of therapeutic exercises does Neuroticure offer?",
+      answer: "We provide evidence‑based exercises including guided mindfulness meditations, cognitive behavioral therapy (CBT) modules, mood journaling prompts, and biofeedback‑assisted breathing sessions."
     },
     {
-      question: "Can I customize the sounds?",
-      answer: "Absolutely! AuraPod comes with a library of over 50 high-quality sounds, from nature sounds to white noise. You can also create custom sound mixes, adjust frequencies, and set personalized sound schedules through our intuitive app."
+      question: "How do I schedule a session with a licensed therapist?",
+      answer: "In the app’s “Professional Guidance” tab, browse available therapists by specialization and availability. Choose a time slot, and you’ll receive a secure video‑chat link along with appointment reminders."
     },
   ];
+  
 
   return (
     <section className="py-16">

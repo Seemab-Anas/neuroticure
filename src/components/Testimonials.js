@@ -72,77 +72,57 @@ export default function Testimonials() {
   const secondRowRef = useRef(null);
 
   useEffect(() => {
-    // Wait for the DOM to be fully rendered
     setTimeout(() => {
+      // First row animation (right to left)
       const firstRowWidth = firstRowRef.current.scrollWidth;
-      const firstRowAnimation = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 5, // Higher value for slower scroll speed
-        }
-      });
+      const singleCardWidth = firstRowWidth / firstRowTestimonials.length;
+      const subtleMovement = singleCardWidth * 0.5;
       
-      // Set initial position to have some cards visible
-      gsap.set(firstRowRef.current, { x: 0 });
-      
-      // Calculate a fraction of a single card width for very subtle movement
-      const singleCardWidth = firstRowWidth / repeatedFirstRow.length;
-      const subtleMovement = singleCardWidth * 0.5; // Move 50% of a card width - enough to see one card appear
-      
-      // Set initial position to have cards partially visible
       gsap.set(firstRowRef.current, { x: `-${subtleMovement * 0.5}px` });
       
-      // Create a very subtle movement
-      firstRowAnimation.to(firstRowRef.current, {
-        x: `-${subtleMovement * 1.5}px`, // Move very slightly
-        ease: 'none', // Use 'none' for the most linear movement
-        duration: 100 // Very high duration for extremely slow movement
-      });
-
-      // Create infinite scrolling effect for second row (left to right)
-      const secondRowWidth = secondRowRef.current.scrollWidth;
-      
-      // Set initial position to have some cards visible
-      gsap.set(secondRowRef.current, { x: `-${secondRowWidth / 3}px` });
-      
-      const secondRowAnimation = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: 5, // Higher value for slower scroll speed
+          scrub: 5,
         }
+      }).to(firstRowRef.current, {
+        x: `-${subtleMovement * 1.5}px`,
+        ease: 'none',
+        duration: 100
       });
+
+      // Second row animation (left to right) - simplified
+      const secondRowWidth = secondRowRef.current.scrollWidth;
+      const singleCardWidth2 = secondRowWidth / secondRowTestimonials.length;
+      const subtleMovement2 = singleCardWidth2 * 0.5;
       
-      // Calculate a fraction of a single card width for very subtle movement
-      const singleCardWidth2 = secondRowWidth / repeatedSecondRow.length;
-      const subtleMovement2 = singleCardWidth2 * 0.5; // Move 50% of a card width - enough to see one card appear
+      // Set initial position (same logic as first row but opposite direction)
+      gsap.set(secondRowRef.current, { x: `-${subtleMovement2 * 0.5}px` });
       
-      // Set initial position to have cards partially visible
-      gsap.set(secondRowRef.current, { x: `-${secondRowWidth / 3 + subtleMovement2 * 0.5}px` });
-      
-      // Create a very subtle movement in the opposite direction
-      secondRowAnimation.to(secondRowRef.current, {
-        x: `-${secondRowWidth / 3 - subtleMovement2 * 0.5}px`, // Move very slightly in opposite direction
-        ease: 'none', // Use 'none' for the most linear movement
-        duration: 100 // Very high duration for extremely slow movement
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 5,
+        }
+      }).to(secondRowRef.current, {
+        x: `${subtleMovement2 * 0.5}px`, // Move in opposite direction
+        ease: 'none',
+        duration: 100
       });
-    }, 100); // Small delay to ensure DOM is ready
+    }, 100);
   }, []);
 
-  // Create arrays with repeated testimonials to ensure infinite scrolling effect
+  // Split testimonials into two rows
   const firstRowTestimonials = testimonials.slice(0, 5);
   const secondRowTestimonials = testimonials.slice(5, 10);
-  
-  // Triple the testimonials to ensure we have enough for infinite scrolling
-  const repeatedFirstRow = [...firstRowTestimonials, ...firstRowTestimonials, ...firstRowTestimonials];
-  const repeatedSecondRow = [...secondRowTestimonials, ...secondRowTestimonials, ...secondRowTestimonials];
 
   return (
     <section className="min-h-screen" ref={containerRef}>
-      <div className="px-6 lg:px-8 py-24">
+      <div className="py-24">
         {/* Header section */}
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-20">
@@ -183,11 +163,11 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Testimonials section with overflow effect */}
+        {/* Testimonials section */}
         <div className="space-y-20 overflow-hidden">
+          {/* First row */}
           <div ref={firstRowRef} className="flex gap-8 w-max" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-            {/* Triple the testimonials to ensure infinite scrolling */}
-            {repeatedFirstRow.map((testimonial, index) => (
+            {firstRowTestimonials.map((testimonial, index) => (
               <div
                 key={index}
                 className="testimonial-card flex-shrink-0 bg-[#E4E1D6] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
@@ -215,9 +195,9 @@ export default function Testimonials() {
             ))}
           </div>
           
-          <div ref={secondRowRef} className="flex gap-8 pb-8 w-max" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-            {/* Triple the testimonials to ensure infinite scrolling */}
-            {repeatedSecondRow.map((testimonial, index) => (
+          {/* Second row */}
+          <div ref={secondRowRef} className="flex gap-8 w-max pb-10" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
+            {secondRowTestimonials.map((testimonial, index) => (
               <div
                 key={index}
                 className="testimonial-card flex-shrink-0 bg-[#E4E1D6] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"

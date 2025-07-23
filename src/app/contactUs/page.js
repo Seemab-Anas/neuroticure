@@ -117,11 +117,11 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Toast Notification */}
       {toast.show && <Toast message={toast.message} type={toast.type} />}
       {/* Hero Section */}
-      <div className="contact-three-hero-big-container relative overflow-hidden bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{backgroundImage: 'url(/contactUs/back.webp)', height: '650.151px'}}>
+      <div className="rounded-b-[50px] contact-three-hero-big-container relative overflow-hidden bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{backgroundImage: 'url(/contactUs/back.webp)', height: '650.151px'}}>
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="contact-three-hero-content relative z-10">
             {/* Header Content */}
@@ -168,12 +168,9 @@ export default function ContactUs() {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 className={`w-full px-0 py-3 text-lg bg-transparent border-0 border-b-2 ${
-                  errors.firstName ? 'border-red-500' : 'border-gradient'
-                } focus:outline-none transition-colors`}
+                  errors.firstName ? 'border-red-500' : 'border-[#e0e0e0]'
+                } focus:border-[#17181D] focus:outline-none transition-colors`}
                 placeholder="First Name *"
-                style={{
-                  borderImage: errors.firstName ? 'none' : 'linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%) 1'
-                }}
               />
               {errors.firstName && <p className="mt-2 text-sm text-red-500">{errors.firstName}</p>}
             </div>
@@ -187,12 +184,9 @@ export default function ContactUs() {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 className={`w-full px-0 py-3 text-lg bg-transparent border-0 border-b-2 ${
-                  errors.lastName ? 'border-red-500' : 'border-gradient'
-                } focus:outline-none transition-colors`}
+                  errors.lastName ? 'border-red-500' : 'border-[#e0e0e0]'
+                } focus:border-[#17181D] focus:outline-none transition-colors`}
                 placeholder="Last Name *"
-                style={{
-                  borderImage: errors.lastName ? 'none' : 'linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%) 1'
-                }}
               />
               {errors.lastName && <p className="mt-2 text-sm text-red-500">{errors.lastName}</p>}
             </div>
@@ -206,12 +200,9 @@ export default function ContactUs() {
                 value={formData.email}
                 onChange={handleInputChange}
                 className={`w-full px-0 py-3 text-lg bg-transparent border-0 border-b-2 ${
-                  errors.email ? 'border-red-500' : 'border-gradient'
-                } focus:outline-none transition-colors`}
+                  errors.email ? 'border-red-500' : 'border-[#e0e0e0]'
+                } focus:border-[#17181D] focus:outline-none transition-colors`}
                 placeholder="Email *"
-                style={{
-                  borderImage: errors.email ? 'none' : 'linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%) 1'
-                }}
               />
               {errors.email && <p className="mt-2 text-sm text-red-500">{errors.email}</p>}
             </div>
@@ -225,12 +216,9 @@ export default function ContactUs() {
                 onChange={handleInputChange}
                 rows={5}
                 className={`w-full px-0 py-3 text-lg bg-transparent border-0 border-b-2 ${
-                  errors.message ? 'border-red-500' : 'border-gradient'
-                } focus:outline-none transition-colors resize-none`}
+                  errors.message ? 'border-red-500' : 'border-[#e0e0e0]'
+                } focus:border-[#17181D] focus:outline-none transition-colors resize-none`}
                 placeholder="Message *"
-                style={{
-                  borderImage: errors.message ? 'none' : 'linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%) 1'
-                }}
               ></textarea>
               {errors.message && <p className="mt-2 text-sm text-red-500">{errors.message}</p>}
             </div>
