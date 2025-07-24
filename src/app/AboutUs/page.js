@@ -1,41 +1,15 @@
 import React from 'react'
+import PageHeader from '@/components/PageHeader'
 
 const page = () => {
   return (
     <>
-      <div className="rounded-b-[50px] contact-three-hero-big-container relative overflow-hidden bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{backgroundImage: 'url(/contactUs/back.webp)', height: '650.151px'}}>
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="contact-three-hero-content relative z-10">
-            {/* Header Content */}
-            <div className="contact-heading-part text-center mb-12 relative p-8 rounded-3xl">
-              {/* Decorative Images positioned at corners of this div */}
-              <div className="absolute top-[-20px] left-[-20px] w-16 h-16 z-10">
-                <img src="/contactUs/p1.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              <div className="absolute top-[-30px] right-[-30px] w-24 h-24 z-10">
-                <img src="/contactUs/p2.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              <div className="absolute bottom-[-45px] left-[-45px] w-20 h-20 z-10">
-                <img src="/contactUs/p3.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              <div className="absolute bottom-[-15px] right-[-15px] w-18 h-18 z-10">
-                <img src="/contactUs/p4.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              
-              <div className="inline-block px-4 py-1 rounded-full bg-[#17181D] text-[#CDAC67] text-lg tracking-tighter mb-4">
-                ABOUT US
-              </div>
-              <h1 className="text-4xl md:text-5xl font-normal tracking-tighter mb-2 text-[#17181D]">
-                Get to Know Neuroticure Better
-              </h1>
-              <p className="max-w-2xl mx-auto text-xl text-[#17181D]/70 tracking-tighter">
-                At Neuroticure, we are driven by a mission to blend technology with neuroscience to improve lives.
-                Discover who we are, what we stand for, and the vision that powers our innovation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageHeader 
+        backgroundImage="/contactUs/back.webp"
+        badge="ABOUT US"
+        title="Get to Know Neuroticure Better"
+        description="At Neuroticure, we are driven by a mission to blend technology with neuroscience to improve lives. Discover who we are, what we stand for, and the vision that powers our innovation."
+      />
       
       {/* Our Vision Section */}
       <div className="vision-section py-20 ">

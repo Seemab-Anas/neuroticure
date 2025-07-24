@@ -77,12 +77,12 @@ const FAQItem = ({ question, answer }) => {
   return (
     <div 
       ref={cardRef}
-      className="bg-[rgb(228,225,214)] rounded-[40px] shadow-lg cursor-pointer mb-4 hover:shadow-xl transition-shadow duration-300"
+      className="bg-[rgb(228,225,214)] rounded-[40px] shadow-lg cursor-pointer mb-4 hover:shadow-xl transition-shadow duration-300 w-full"
       onClick={toggleFAQ}
       tabIndex="0"
       data-highlight="true"
       style={{
-        width: '419.986px',
+        maxWidth: '100%',
         minHeight: '80px',
         boxShadow: "rgba(0, 0, 0, 0.03) 0px 0.602187px 1.80656px -0.25px, rgba(0, 0, 0, 0.05) 0px 2.28853px 6.8656px -0.5px, rgba(0, 0, 0, 0.13) 0px 10px 30px -0.75px"
       }}
@@ -134,19 +134,24 @@ const FAQ = () => {
 
   return (
     <section className="py-16">
-      <div className="container mx-auto" style={{ paddingLeft: '262px', paddingRight: '262px' }}>
-        <div className="flex flex-wrap justify-between">
-          <div className="flex-1 pr-8">
-            <div className="bg-[rgb(40,41,46)] h-auto rounded-[40px] inline-block px-6 py-2 mb-4">
-              <p className="text-[rgb(205,172,103)]">FAQ</p>
-            </div>
-            <h2 className="text-4xl font-medium mb-4 text-left text-[rgb(23,24,29)]">
-              Got Questions? <br /> We&#39;ve Got Answers
-            </h2>
-            <p className="text-[rgba(23,24,29,0.7)] text-xl mb-8 text-left font-['Open_Sans']" style={{ letterSpacing: '-0.02em', lineHeight: '28px' }}>
-              Explore common questions about AuraPod
-            </p>
-            
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-[262px]">
+        {/* Header section - centered on mobile like testimonials */}
+        <div className="flex flex-col items-center lg:items-start mb-10">
+          <div className="bg-[rgb(40,41,46)] h-auto rounded-[40px] inline-block px-6 py-2 mb-4">
+            <p className="text-[rgb(205,172,103)]">FAQ</p>
+          </div>
+          <h2 className="text-4xl font-medium mb-4 text-center lg:text-left text-[rgb(23,24,29)]">
+            Got Questions? <br /> We&#39;ve Got Answers
+          </h2>
+          <p className="text-[rgba(23,24,29,0.7)] text-xl mb-8 text-center lg:text-left font-['Open_Sans']" style={{ letterSpacing: '-0.02em', lineHeight: '28px' }}>
+            Explore common questions about AuraPod
+          </p>
+        </div>
+        
+        {/* Content section - column on mobile, row on desktop */}
+        <div className="flex flex-col lg:flex-row lg:justify-between">
+          {/* FAQ items section */}
+          <div className="w-full lg:w-1/2 lg:pr-8 mb-12 lg:mb-0">
             <div className="flex flex-col items-start space-y-6">
               {faqItems.map((item, index) => (
                 <FAQItem key={index} question={item.question} answer={item.answer} />
@@ -154,8 +159,9 @@ const FAQ = () => {
             </div>
           </div>
           
-          <div className="flex-1 pt-8">
-            <div className="relative w-[100%]">
+          {/* Image section - below FAQs on mobile, side by side on desktop */}
+          <div className="w-full lg:w-1/2 lg:pt-0">
+            <div className="relative w-full max-w-[585px] mx-auto lg:mx-0">
               <Image 
                 src="/faq.jpg" 
                 alt="AuraPod FAQ" 
@@ -163,7 +169,7 @@ const FAQ = () => {
                 height={776}
                 className="rounded-[20%] object-cover h-full w-full"
               />
-              <div className="absolute bottom-8 left-8 right-8 bg-[rgb(40,41,46)] rounded-[40px] w-80 mx-auto p-6 shadow-lg">
+              <div className="absolute bottom-8 left-0 right-0 bg-[rgb(40,41,46)] rounded-[40px] w-80 mx-auto p-6 shadow-lg">
                 <div className="flex items-start">
                   <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 mr-4">
                     <Image 

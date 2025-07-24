@@ -14,9 +14,9 @@ export default function page() {
       <FloatingCards />
       <LogoSlider />
       <WhatWeDo />
-      <WhyUs />
+      <WhyUs /> 
       <Testimonials />
-      <FAQ />
+      <FAQ /> 
       <Hero />
     </main>
   );

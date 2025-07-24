@@ -2,8 +2,8 @@ import UserStats from './UserStats';
 
 export default function Hero() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 pt-40 lg:px-8">
+    <div className="relative overflow-hidden h-[80vh] md:min-h-screen flex items-center">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <div className="flex justify-center mb-6">
             <UserStats />

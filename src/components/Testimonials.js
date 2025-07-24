@@ -1,10 +1,6 @@
 "use client"
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const avatarImages = [
   "/avatar1.png",
@@ -68,57 +64,14 @@ const testimonials = [
 
 export default function Testimonials() {
   const containerRef = useRef(null);
-  const firstRowRef = useRef(null);
-  const secondRowRef = useRef(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      // First row animation (right to left)
-      const firstRowWidth = firstRowRef.current.scrollWidth;
-      const singleCardWidth = firstRowWidth / firstRowTestimonials.length;
-      const subtleMovement = singleCardWidth * 0.5;
-      
-      gsap.set(firstRowRef.current, { x: `-${subtleMovement * 0.5}px` });
-      
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 5,
-        }
-      }).to(firstRowRef.current, {
-        x: `-${subtleMovement * 1.5}px`,
-        ease: 'none',
-        duration: 100
-      });
-
-      // Second row animation (left to right) - simplified
-      const secondRowWidth = secondRowRef.current.scrollWidth;
-      const singleCardWidth2 = secondRowWidth / secondRowTestimonials.length;
-      const subtleMovement2 = singleCardWidth2 * 0.5;
-      
-      // Set initial position (same logic as first row but opposite direction)
-      gsap.set(secondRowRef.current, { x: `-${subtleMovement2 * 0.5}px` });
-      
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 5,
-        }
-      }).to(secondRowRef.current, {
-        x: `${subtleMovement2 * 0.5}px`, // Move in opposite direction
-        ease: 'none',
-        duration: 100
-      });
-    }, 100);
-  }, []);
 
   // Split testimonials into two rows
   const firstRowTestimonials = testimonials.slice(0, 5);
   const secondRowTestimonials = testimonials.slice(5, 10);
+  
+  // Duplicate testimonials for infinite slider effect
+  const firstRowSlider = [...firstRowTestimonials, ...firstRowTestimonials];
+  const secondRowSlider = [...secondRowTestimonials, ...secondRowTestimonials];
 
   return (
     <section className="min-h-screen" ref={containerRef}>
@@ -166,8 +119,12 @@ export default function Testimonials() {
         {/* Testimonials section */}
         <div className="space-y-20 overflow-hidden">
           {/* First row */}
-          <div ref={firstRowRef} className="flex gap-8 w-max" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-            {firstRowTestimonials.map((testimonial, index) => (
+          <div className="relative overflow-hidden">
+            {/* Gradient overlays */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#D5CEBC] to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#D5CEBC] to-transparent pointer-events-none" />
+            <div className="flex animate-scroll-left gap-8 w-max mb-8" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
+              {firstRowSlider.map((testimonial, index) => (
               <div
                 key={index}
                 className="testimonial-card flex-shrink-0 bg-[#E4E1D6] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
@@ -193,11 +150,16 @@ export default function Testimonials() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
           
           {/* Second row */}
-          <div ref={secondRowRef} className="flex gap-8 w-max pb-10" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
-            {secondRowTestimonials.map((testimonial, index) => (
+          <div className="relative overflow-hidden">
+            {/* Gradient overlays */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#D5CEBC] to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#D5CEBC] to-transparent pointer-events-none" />
+            <div className="flex animate-scroll-right gap-8 w-max pb-10" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
+              {secondRowSlider.map((testimonial, index) => (
               <div
                 key={index}
                 className="testimonial-card flex-shrink-0 bg-[#E4E1D6] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
@@ -223,9 +185,38 @@ export default function Testimonials() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx global>{`
+        @keyframes scrollLeft {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        @keyframes scrollRight {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        
+        .animate-scroll-left {
+          animation: scrollLeft 60s linear infinite;
+        }
+        
+        .animate-scroll-right {
+          animation: scrollRight 60s linear infinite;
+        }
+      `}</style>
     </section>
   );
 }

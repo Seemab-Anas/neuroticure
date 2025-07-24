@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import PageHeader from '@/components/PageHeader';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
@@ -121,39 +122,12 @@ export default function ContactUs() {
       {/* Toast Notification */}
       {toast.show && <Toast message={toast.message} type={toast.type} />}
       {/* Hero Section */}
-      <div className="rounded-b-[50px] contact-three-hero-big-container relative overflow-hidden bg-cover bg-center bg-no-repeat flex items-center justify-center" style={{backgroundImage: 'url(/contactUs/back.webp)', height: '650.151px'}}>
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="contact-three-hero-content relative z-10">
-            {/* Header Content */}
-            <div className="contact-heading-part text-center mb-12 relative p-8 rounded-3xl">
-              {/* Decorative Images positioned at corners of this div */}
-              <div className="absolute top-[-20px] left-[-20px] w-16 h-16 z-10">
-                <img src="/contactUs/p1.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              <div className="absolute top-[-30px] right-[-30px] w-24 h-24 z-10">
-                <img src="/contactUs/p2.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              <div className="absolute bottom-[-45px] left-[-45px] w-20 h-20 z-10">
-                <img src="/contactUs/p3.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              <div className="absolute bottom-[-15px] right-[-15px] w-18 h-18 z-10">
-                <img src="/contactUs/p4.webp" alt="Decorative" className="w-full h-full object-cover rounded-full shadow-lg" />
-              </div>
-              
-              <div className="inline-block px-4 py-1 rounded-full bg-[#17181D] text-[#CDAC67] text-lg tracking-tighter mb-4">
-                CONTACT US
-              </div>
-              <h1 className="text-4xl md:text-5xl font-normal tracking-tighter mb-2 text-[#17181D]">
-                Have Any Questions? Don&#39;t Hesitate to Reach Us
-              </h1>
-              <p className="max-w-2xl mx-auto text-xl text-[#17181D]/70 tracking-tighter">
-                We&#39;re here to help and answer any question you might have. 
-                We look forward to hearing from you and will respond as soon as possible.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PageHeader 
+        backgroundImage="/contactUs/back.webp"
+        badge="CONTACT US"
+        title="Have Any Questions? Don't Hesitate to Reach Us"
+        description="We're here to help and answer any question you might have. We look forward to hearing from you and will respond as soon as possible."
+      />
 
       {/* Contact Form Section */}
       <div className="py-20 bg-[#D5CEBC] text-black">
