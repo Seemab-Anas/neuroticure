@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const menuRef = useRef(null);
 
   // Close menu when clicking outside
@@ -22,9 +24,34 @@ export default function Navbar() {
     };
   }, []);
 
+  // Control navbar visibility based on scroll direction
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      
+      // Update scroll position
+      setLastScrollY(currentScrollY);
+    };
+    
+    window.addEventListener('scroll', controlNavbar);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
     <div className="relative" ref={menuRef}>
-      <nav className="fixed w-full z-50 flex justify-center items-center px-4 py-3">
+      <nav className={`fixed w-full z-50 flex justify-center items-center px-4 py-3 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="flex justify-between items-center w-full max-w-[1200px] h-[64px] bg-[#17181D] rounded-[64px] px-4">
           {/* Logo - always visible */}
           <div className="flex items-center">
