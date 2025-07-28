@@ -164,7 +164,7 @@ export default function ContactUs() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Column - Contact Form */}
-            <div className="w-full lg:flex-[1.3] bg-[#17181C] p-8 rounded-lg">
+            <div className="w-full lg:flex-[1.3] bg-[#17181D] p-8 rounded-lg">
               <div className="space-y-6">
                 {/* Your Name */}
                 <div className="relative">
@@ -286,13 +286,13 @@ export default function ContactUs() {
             {/* Right Column - Text Content */}
             <div className="w-full lg:flex-1 lg:pl-8">
               <div className="space-y-6">
-                <p className="text-gray-600 text-sm uppercase tracking-wider">
+                <p className="text-[#17181D] text-sm uppercase tracking-wider">
                   WE ARE HERE TO HELP YOU
                 </p>
-                <h2 className="text-4xl lg:text-5xl font-semibold text-gray-800 leading-tight">
+                <h2 className="text-4xl lg:text-5xl font-semibold text-[#17181D] leading-tight">
                   DISCUSS YOUR THERAPY SOLUTION HERE
                 </h2>
-                <p className="text-gray-600 text-base leading-relaxed mb-8">
+                <p className="text-[#17181D] text-base leading-relaxed mb-8">
                   Are you looking for top quality ai therapist solution tailored to your need? Reach out us now
                 </p>
                 
@@ -304,8 +304,8 @@ export default function ContactUs() {
                       <img src="/contactUs/mail.png" alt="Email" className="w-6 h-6 filter brightness-0 invert" />
                     </div>
                     <div>
-                      <p className="text-black font-medium">Email</p>
-                      <p className="text-gray-600">neuroticure@nu.com</p>
+                      <p className="text-[#17181D] font-medium">Email</p>
+                      <p className="text-[#17181dc1]">neuroticure@nu.com</p>
                     </div>
                   </div>
                   
@@ -317,8 +317,8 @@ export default function ContactUs() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-black font-medium">Phone</p>
-                      <p className="text-gray-600">+1 (555) 123-4567</p>
+                      <p className="text-[#17181D] font-medium">Phone</p>
+                      <p className="text-[#17181dc1]">+1 (555) 123-4567</p>
                     </div>
                   </div>
                 </div>

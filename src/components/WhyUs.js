@@ -4,29 +4,23 @@ import Image from 'next/image';
 export default function WhyUs() {
   const cards = [
     {
-      title: "Science-Backed Methods",
-      description: "Our techniques are grounded in neuroscience and sleep research, ensuring effective and reliable results.",
+      title: "Affordable and Scalable",
+      description: "Neuroticure ensures cost-effective care through free and premium app features, making mental health support accessible to a wide audience.",
       icon: "/whyus/icon1.svg",
-      background: "/whyus/card1.webp"
+      background: "/whyus/card1.jpg"
     },
     {
-      title: "Personalized Experience",
-      description: "Adaptive technology that learns and adjusts to your unique sleep patterns and preferences.",
+      title: "Culturally Sensitive",
+      description: "Our platform is designed with inclusivity in mind, offering solutions that respect diverse cultural and social contexts.",
       icon: "/whyus/icon2.svg",
-      background: "/whyus/card2.webp"
+      background: "/whyus/card2.jpg"
     },
     {
-      title: "Continuous Support",
-      description: "24/7 access to resources and guidance to help you maintain healthy sleep habits.",
+      title: "AI-driven Care",
+      description: "By combining the latest in artificial intelligence with human-centered care, Neuroticure delivers personalized, data-backed mental health support.",
       icon: "/whyus/icon3.svg",
-      background: "/whyus/card3.webp"
+      background: "/whyus/card3.jpg"
     },
-    {
-      title: "Privacy First",
-      description: "Your data is encrypted and protected, ensuring your sleep information stays completely private.",
-      icon: "/whyus/icon4.svg",
-      background: "/whyus/card4.webp"
-    }
   ];
 
   return (
@@ -45,34 +39,49 @@ export default function WhyUs() {
           </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4">
+        {/* Vertical Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {cards.map((card, index) => (
-            <div 
+            <div
               key={index}
-              className="relative rounded-[50px] overflow-hidden group transition-all duration-300 aspect-square"
-              style={{
-                backgroundImage: `url(${card.background})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
+              className="relative h-[500px] rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:shadow-2xl"
             >
-              <div className="absolute inset-0" />
-              <div className="relative z-10 p-5 flex flex-col items-start h-full">
-                <div className="flex-shrink-0 mb-6">
-                  <Image
-                    src={card.icon}
-                    alt=""
-                    width={48}
-                    height={48}
-                    className="w-12 h-12"
-                  />
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={card.background}
+                  alt={card.title}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+                {/* Base Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/0 transition-all duration-1000 ease-out group-hover:bg-black/40"></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative h-full flex flex-col justify-between p-6 text-white">
+                {/* Icon */}
+                <div className="flex justify-start">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                    <Image
+                      src={card.icon}
+                      alt={`${card.title} icon`}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6"
+                    />
+                  </div>
                 </div>
-                <div className="mt-auto">
-                  <h3 className="text-2xl font-medium tracking-tighter mb-4 text-white">
+
+                {/* Title and Description */}
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-semibold tracking-tight">
                     {card.title}
                   </h3>
-                  <p className="text-lg text-white/90 tracking-tighter leading-relaxed">
+                  <p className="text-white/90 leading-relaxed text-sm">
                     {card.description}
                   </p>
                 </div>
