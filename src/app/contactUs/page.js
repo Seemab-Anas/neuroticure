@@ -20,7 +20,7 @@ export default function ContactUs() {
 
   // Initialize EmailJS (add your public key here)
   useEffect(() => {
-    emailjs.init('pCX9qeHrMqyFJPQ9a'); // Replace with your actual public key
+    emailjs.init('kerMNCY8dGoazdju9'); // Replace with your actual public key
   }, []);
 
   const validateForm = () => {
@@ -107,8 +107,8 @@ export default function ContactUs() {
 
       // Send email using EmailJS
       await emailjs.send(
-        'service_9g2da1c',     // Replace with your actual service ID
-        'template_4y9wbya',    // Replace with your actual template ID
+        'service_yxhca3d',     // Replace with your actual service ID
+        'template_t33zv7f',    // Replace with your actual template ID
         templateParams
       );
       
