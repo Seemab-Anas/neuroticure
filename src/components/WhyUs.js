@@ -6,20 +6,20 @@ export default function WhyUs() {
     {
       title: "Affordable and Scalable",
       description: "Neuroticure ensures cost-effective care through free and premium app features, making mental health support accessible to a wide audience.",
-      icon: "/whyus/icon1.svg",
-      background: "/whyus/card1.jpg"
+      icon: "/whyUs/icon1.svg",
+      background: "/whyUs/card1.jpg"
     },
     {
       title: "Culturally Sensitive",
       description: "Our platform is designed with inclusivity in mind, offering solutions that respect diverse cultural and social contexts.",
-      icon: "/whyus/icon2.svg",
-      background: "/whyus/card2.jpg"
+      icon: "/whyUs/icon2.svg",
+      background: "/whyUs/card2.jpg"
     },
     {
       title: "AI-driven Care",
       description: "By combining the latest in artificial intelligence with human-centered care, Neuroticure delivers personalized, data-backed mental health support.",
-      icon: "/whyus/icon3.svg",
-      background: "/whyus/card3.jpg"
+      icon: "/whyUs/icon3.svg",
+      background: "/whyUs/card3.jpg"
     },
   ];
 
