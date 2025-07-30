@@ -9,7 +9,7 @@ const Footer = () => {
       {/* Background image with overlay */}
       <div className="relative w-full">
         {/* Rounded border div absolute to the image and shown at the top */}
-        <div className="absolute top-0 left-0 right-0 z-10 w-full h-16 bg-[#D5CEBC] rounded-bl-[50px] rounded-br-[50px]"></div>
+        <div className="absolute top-0 left-0 right-0 z-10 w-full h-16 bg-[#FAF6E9] rounded-bl-[50px] rounded-br-[50px]"></div>
         
         {/* Background image - for both mobile and desktop */}
         <div className="relative">

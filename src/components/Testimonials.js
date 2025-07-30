@@ -121,13 +121,13 @@ export default function Testimonials() {
           {/* First row */}
           <div className="relative overflow-hidden">
             {/* Gradient overlays */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#D5CEBC] to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#D5CEBC] to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#FAF6E9] to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#FAF6E9] to-transparent pointer-events-none" />
             <div className="flex animate-scroll-left gap-8 w-max mb-8" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
               {firstRowSlider.map((testimonial, index) => (
               <div
                 key={index}
-                className="testimonial-card flex-shrink-0 bg-[#E4E1D6] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
+                className="testimonial-card flex-shrink-0 bg-[#FAF6E9] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
                 style={{
                   width: '380px',
                   height: '216px',
@@ -156,13 +156,13 @@ export default function Testimonials() {
           {/* Second row */}
           <div className="relative overflow-hidden">
             {/* Gradient overlays */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#D5CEBC] to-transparent pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#D5CEBC] to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#FAF6E9] to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#FAF6E9] to-transparent pointer-events-none" />
             <div className="flex animate-scroll-right gap-8 w-max pb-10" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
               {secondRowSlider.map((testimonial, index) => (
               <div
                 key={index}
-                className="testimonial-card flex-shrink-0 bg-[#E4E1D6] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
+                className="testimonial-card flex-shrink-0 bg-[#FAF6E9] rounded-[40px] p-5 border border-[#17181D]/[0.07] shadow-[0px_0.6px_1.8px_-0.25px_rgba(0,0,0,0.03),0px_2.3px_6.9px_-0.5px_rgba(0,0,0,0.05),0px_10px_30px_-0.75px_rgba(0,0,0,0.13)]"
                 style={{
                   width: '380px',
                   height: '216px',

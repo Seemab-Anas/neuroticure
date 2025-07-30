@@ -160,7 +160,7 @@ export default function ContactUs() {
       />
 
       {/* Contact Form Section */}
-      <div className="py-20 bg-[#D5CEBC]">
+      <div className="py-20">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Column - Contact Form */}

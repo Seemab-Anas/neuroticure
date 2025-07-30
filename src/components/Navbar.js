@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -93,7 +92,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link 
               href="#contact" 
-              className="inline-flex items-center justify-center h-10 px-6 text-base tracking-tighter font-normal leading-6 text-[#171824] bg-[#D5CEBC] rounded-[24px] hover:bg-[#fefefe] transition-colors"
+              className="inline-flex items-center justify-center h-10 px-6 text-base tracking-tighter font-normal leading-6 text-[#171824] bg-[#FAF6E9] rounded-[24px] hover:bg-[#fefefe] transition-colors"
             >
               Pre Launch Access
             </Link>
@@ -101,7 +100,7 @@ export default function Navbar() {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden flex items-center justify-center h-10 px-4 bg-[#D5CEBC] rounded-[24px] hover:bg-[#fefefe] transition-colors"
+            className="md:hidden flex items-center justify-center h-10 px-4 bg-[#FAF6E9] rounded-[24px] hover:bg-[#fefefe] transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -142,7 +141,7 @@ export default function Navbar() {
             </Link>
             <Link 
               href="#contact" 
-              className="w-full h-10 flex items-center justify-center text-base tracking-tighter font-normal leading-6 text-[#171824] bg-[#D5CEBC] rounded-[24px] hover:bg-[#fefefe] transition-colors"
+              className="w-full h-10 flex items-center justify-center text-base tracking-tighter font-normal leading-6 text-[#171824] bg-[#FAF6E9] rounded-[24px] hover:bg-[#fefefe] transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Pre Launch Access

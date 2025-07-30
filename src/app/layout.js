@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={openSans.variable}>
-      <body className="font-sans" style={{ backgroundColor: '#D5CEBC', fontFamily: 'var(--font-open-sans)' }}>
+      <body className="font-sans" style={{ backgroundColor: '#FAF6E9', fontFamily: 'var(--font-open-sans)' }}>
         <SmoothScroll>
           <Navbar />
           {children}

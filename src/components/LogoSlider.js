@@ -9,8 +9,8 @@ export default function LogoSlider() {
     <div className="overflow-hidden">
       <div className="relative mx-auto max-w-7xl px-4 md:px-6 mt-10 md:mt-20 lg:px-8">
         {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#D5CEBC] to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#D5CEBC] to-transparent pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-r from-[#FAF6E9] to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 z-10 bg-gradient-to-l from-[#FAF6E9] to-transparent pointer-events-none" />
         
         {/* Slider container */}
         <div className="relative overflow-hidden">

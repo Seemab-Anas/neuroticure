@@ -35,7 +35,7 @@ const FAQItem = ({ question, answer }) => {
         ease: "power2.out"
       })
       .to(cardRef.current, {
-        backgroundColor: "rgb(220, 215, 200)", // Slightly darker when open
+        backgroundColor: "#FAF6E9", // Background color when open
         duration: 0.2,
         ease: "power2.out"
       }, 0)
@@ -67,7 +67,7 @@ const FAQItem = ({ question, answer }) => {
         ease: "power2.out"
       }, 0)
       .to(cardRef.current, {
-        backgroundColor: "rgb(228, 225, 214)", // Back to original color
+        backgroundColor: "#FAF6E9", 
         duration: 0.2,
         ease: "power2.out"
       }, 0);
@@ -77,7 +77,7 @@ const FAQItem = ({ question, answer }) => {
   return (
     <div 
       ref={cardRef}
-      className="bg-[rgb(228,225,214)] rounded-[40px] shadow-lg cursor-pointer mb-4 hover:shadow-xl transition-shadow duration-300 w-full"
+      className="bg-[#FAF6E9] rounded-[40px] shadow-lg cursor-pointer mb-4 hover:shadow-xl transition-shadow duration-300 w-full"
       onClick={toggleFAQ}
       tabIndex="0"
       data-highlight="true"
