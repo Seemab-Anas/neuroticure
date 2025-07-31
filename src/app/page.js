@@ -11,7 +11,7 @@ import PageLoaderGSAP from '@/components/PageLoaderGSAP';
 import { useState, useEffect } from 'react';
 
 
-export default function page() {
+export default function Page() {
 
   const [showLoader, setShowLoader] = useState(true);
 
