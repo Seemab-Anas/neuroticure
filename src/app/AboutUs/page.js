@@ -5,7 +5,7 @@ import PageHeader from '@/components/PageHeader'
 import PageLoaderGSAP from '@/components/PageLoaderGSAP'
 import { useState, useEffect } from 'react';
 
-const page = () => {
+const Page = () => {
 
   const [showLoader, setShowLoader] = useState(true);
 
@@ -282,4 +282,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
