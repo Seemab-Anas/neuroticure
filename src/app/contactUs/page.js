@@ -1,10 +1,19 @@
 'use client';
 
+import React from 'react'
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import PageHeader from '@/components/PageHeader';
+import PageLoaderGSAP from '@/components/PageLoaderGSAP';
 
 export default function ContactUs() {
+
+  const [showLoader, setShowLoader] = useState(true);
+
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
+  };
+
   const [formData, setFormData] = useState({
     yourName: '',
     email: '',
@@ -147,6 +156,15 @@ export default function ContactUs() {
   };
 
   return (
+    <>
+      {/* Loader covers the page initially, then slides up */}
+      {showLoader && (
+        <PageLoaderGSAP 
+          pageName="contact" 
+          onComplete={handleLoaderComplete}
+        />
+      )}
+
     <div className="min-h-screen">
       {/* Toast Notification */}
       {toast.show && <Toast message={toast.message} type={toast.type} />}
@@ -328,5 +346,6 @@ export default function ContactUs() {
         </div>
       </div>
     </div>
+    </>
   );
 }

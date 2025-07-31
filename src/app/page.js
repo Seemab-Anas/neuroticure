@@ -1,3 +1,4 @@
+'use client';
 import React from 'react'
 import Hero from '@/components/Hero';
 import FloatingCards from '@/components/FloatingCards';
@@ -6,9 +7,28 @@ import WhatWeDo from '@/components/WhatWeDo';
 import WhyUs from '@/components/WhyUs';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
+import PageLoaderGSAP from '@/components/PageLoaderGSAP';
+import { useState, useEffect } from 'react';
+
 
 export default function page() {
+
+  const [showLoader, setShowLoader] = useState(true);
+
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
+  };
+
   return (
+    <>
+      
+      {showLoader && (
+        <PageLoaderGSAP 
+          pageName="home" 
+          onComplete={handleLoaderComplete}
+        />
+      )}
+
     <main className="min-h-screen">
       <Hero />
       <FloatingCards />
@@ -19,5 +39,6 @@ export default function page() {
       <FAQ /> 
       <Hero />
     </main>
+    </>
   );
 }

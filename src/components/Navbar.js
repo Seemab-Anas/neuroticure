@@ -65,8 +65,11 @@ export default function Navbar() {
               Neuroticure
             </Link>
             
-            {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center ml-[100px] space-x-2">
+            
+          </div>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center space-x-2">
               <Link 
                 href="/" 
                 className="w-[86px] h-10 flex items-center justify-center text-base tracking-tighter text-[#F4F3F0] font-normal leading-6 rounded-[24px] hover:bg-[#ffffff09] transition-colors"
@@ -86,7 +89,6 @@ export default function Navbar() {
                 Contact Us
               </Link>
             </div>
-          </div>
           
           {/* Desktop Pre Launch Button */}
           <div className="hidden md:block">

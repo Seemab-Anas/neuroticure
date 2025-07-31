@@ -1,10 +1,27 @@
+'use client';
 import React from 'react'
 import Image from 'next/image'
 import PageHeader from '@/components/PageHeader'
+import PageLoaderGSAP from '@/components/PageLoaderGSAP'
+import { useState, useEffect } from 'react';
 
 const page = () => {
+
+  const [showLoader, setShowLoader] = useState(true);
+
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
+  };
+
   return (
     <>
+      {showLoader && (
+        <PageLoaderGSAP 
+          pageName="aboutus" 
+          onComplete={handleLoaderComplete}
+        />
+      )}
+
       <PageHeader 
         backgroundImage="/contactUs/back.webp"
         badge="ABOUT US"
