@@ -29,7 +29,7 @@ export default function ContactUs() {
 
   // Initialize EmailJS (add your public key here)
   useEffect(() => {
-    emailjs.init('kerMNCY8dGoazdju9'); // Replace with your actual public key
+    emailjs.init('kerMNCY8dGoazdju'); // Replace with your actual public key
   }, []);
 
   const validateForm = () => {
@@ -157,14 +157,7 @@ export default function ContactUs() {
 
   return (
     <>
-      {/* Loader covers the page initially, then slides up */}
-      {showLoader && (
-        <PageLoaderGSAP 
-          pageName="contact" 
-          onComplete={handleLoaderComplete}
-        />
-      )}
-
+      
     <div className="min-h-screen">
       {/* Toast Notification */}
       {toast.show && <Toast message={toast.message} type={toast.type} />}

@@ -2,76 +2,70 @@
 // First install GSAP: npm install gsap
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 const PageLoaderGSAP = ({ pageName, onComplete }) => {
   const loaderRef = useRef(null);
-  const leftPartRef = useRef(null);
-  const rightPartRef = useRef(null);
-  const visiblePartRef = useRef(null);
+  const logoRef = useRef(null);
+  const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
-    const tl = gsap.timeline();
+    // Check if loader has been shown before in this session
+    const hasShownLoader = sessionStorage.getItem('loaderShown');
+    
+    if (!hasShownLoader) {
+      setShouldShow(true);
+      sessionStorage.setItem('loaderShown', 'true');
+      
+      // Hide loader when page is loaded
+      const handleLoad = () => {
+        gsap.to(loaderRef.current, {
+          y: '-100%',
+          duration: 1.2,
+          ease: 'power2.inOut',
+          borderRadius: '50%', // Full rounded border radius
+          onComplete: () => {
+            if (onComplete) onComplete();
+          },
+        });
+      };
 
-    // Initial setup - completely hide left and right parts, show only middle
-    gsap.set([leftPartRef.current, rightPartRef.current], {
-      x: 0,
-    });
+      // Check if page is already loaded
+      if (document.readyState === 'complete') {
+        handleLoad();
+      } else {
+        // Listen for load event
+        window.addEventListener('load', handleLoad);
+      }
 
-    // Animate the reveal - much slower timing
-    tl.to(leftPartRef.current, {
-      x: '-100%',
-      duration: 1.5,
-      ease: 'power2.inOut',
-      delay: 1,
-    })
-    .to(rightPartRef.current, {
-      x: '100%',
-      duration: 1.5,
-      ease: 'power2.inOut',
-    }, '<'); // Start at the same time as previous animation
-
-    // Hide loader after animation - slide up to reveal page
-    const hideTimer = setTimeout(() => {
-      gsap.to(loaderRef.current, {
-        y: '-100%',
-        duration: 1.2,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          if (onComplete) onComplete();
-        },
-      });
-    }, 5000); // Increased from 3000 to 5000
-
-    return () => {
-      clearTimeout(hideTimer);
-      tl.kill();
-    };
+      return () => {
+        window.removeEventListener('load', handleLoad);
+      };
+    } else {
+      // If loader has been shown before, immediately call onComplete
+      if (onComplete) onComplete();
+    }
   }, [onComplete]);
 
-  const getDisplayText = () => {
-    switch (pageName.toLowerCase()) {
-      case 'contact':
-        return { full: 'CONTACT', left: 'CON', visible: 'T', right: 'ACT' };
-      case 'home':
-        return { full: 'NEUROTICURE', left: 'NEURO', visible: 'T', right: 'CURE' };
-      case 'aboutus':
-        return { full: 'ABOUT US', left: 'ABO', visible: 'U', right: 'T US' };
-      default:
-        return { full: pageName.toUpperCase(), left: '', visible: pageName.charAt(0), right: '' };
-    }
-  };
-
-  const textData = getDisplayText();
+  // Don't render loader if it shouldn't show
+  if (!shouldShow) {
+    return null;
+  }
 
   return (
     <div ref={loaderRef} className="loading-screen">
-      <div className="text-container">
-        {/* Full word always visible but parts covered by boxes */}
-        <span ref={visiblePartRef} className="full-text">{textData.full}</span>
-        
-        {/* Empty covering boxes - no text, just background color */}
-        <div ref={leftPartRef} className="text-part left-part"></div>
-        <div ref={rightPartRef} className="text-part right-part"></div>
+      <div className="logo-container">
+        {/* Logo directly visible without any covering elements */}
+        <div ref={logoRef} className="logo-wrapper">
+          <Image 
+            src="/logo.png" 
+            alt="Logo" 
+            width={200} 
+            height={200}
+            className="logo-image"
+            priority
+          />
+        </div>
       </div>
 
       {/* Loading progress indicator */}
@@ -92,55 +86,35 @@ const PageLoaderGSAP = ({ pageName, onComplete }) => {
           justify-content: center;
           align-items: center;
           z-index: 9999;
+          border-radius: 0;
+          transition: border-radius 1.2s ease-in-out;
         }
 
-        .text-container {
+        .logo-container {
           display: flex;
           align-items: center;
-          font-family: 'Arial Black', sans-serif;
-          font-size: 4rem;
-          font-weight: 900;
-          color: #333;
-          letter-spacing: 0.1em;
-          overflow: visible;
+          justify-content: center;
           margin-bottom: 2rem;
           position: relative;
+          width: 200px;
+          height: 200px;
         }
 
-        .text-part {
+        .logo-wrapper {
           position: relative;
-          display: inline-block;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .left-part,
-        .right-part {
-          background: #FAF6E9;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          height: 120%;
-          z-index: 3;
-        }
-
-        .left-part {
-          left: 0;
-          right: 50%; /* Covers left half, stops at middle */
-        }
-
-        .right-part {
-          left: 50%; /* Starts from middle, covers right half */
-          right: 0;
-        }
-
-        .visible-part {
-          z-index: 1;
-          position: relative;
-        }
-
-        .full-text {
-          color: #333;
-          position: relative;
-          z-index: 2;
+        .logo-image {
+          width: auto;
+          height: auto;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
         }
 
         .loading-indicator {
@@ -154,7 +128,7 @@ const PageLoaderGSAP = ({ pageName, onComplete }) => {
         .progress-bar {
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, #333, transparent);
+          background: linear-gradient(90deg, #23456C, #1C9454);
           animation: loading 3s ease-in-out infinite;
         }
 
@@ -164,8 +138,9 @@ const PageLoaderGSAP = ({ pageName, onComplete }) => {
         }
 
         @media (max-width: 768px) {
-          .text-container {
-            font-size: 2.5rem;
+          .logo-container {
+            width: 150px;
+            height: 150px;
           }
           .loading-indicator {
             width: 150px;
@@ -173,8 +148,9 @@ const PageLoaderGSAP = ({ pageName, onComplete }) => {
         }
 
         @media (max-width: 480px) {
-          .text-container {
-            font-size: 2rem;
+          .logo-container {
+            width: 120px;
+            height: 120px;
           }
           .loading-indicator {
             width: 120px;

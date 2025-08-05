@@ -15,13 +15,7 @@ const Page = () => {
 
   return (
     <>
-      {showLoader && (
-        <PageLoaderGSAP 
-          pageName="aboutus" 
-          onComplete={handleLoaderComplete}
-        />
-      )}
-
+      
       <PageHeader 
         backgroundImage="/contactUs/back.webp"
         badge="ABOUT US"
