@@ -129,27 +129,27 @@ const Page = () => {
               {[
                 {
                   id: 1,
-                  name: "John Doe",
-                  role: "Chief Executive Officer",
+                  name: "Abu Bakar Badar",
+                  role: "Co-Founder Neuroticure",
                   image: "/about/team1.jpg"
                 },
                 {
                   id: 2,
-                  name: "Jane Smith",
-                  role: "Chief Technology Officer",
+                  name: "Afsheen Tajummal",
+                  role: "Co-Founder Neuroticure",
                   image: "/about/team2.jpg"
                 },
                 {
                   id: 3,
-                  name: "Michael Johnson",
-                  role: "Lead Designer",
+                  name: "Dr. Zainab Khalid",
+                  role: "Clinical Psychologist",
                   image: "/about/team3.jpg"
                 },
                 {
                   id: 4,
-                  name: "Sarah Williams",
-                  role: "Marketing Director",
-                  image: "/about/team1.jpg"
+                  name: "Maryam Noor ul Ain",
+                  role: "Researcher",
+                  image: "/about/team4.png"
                 }
               ].map((member) => (
                 <div key={member.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-10">
@@ -244,14 +244,16 @@ const Page = () => {
 
                   {/* Content */}
                   <div className="relative h-full flex flex-col justify-between p-3 text-white">
-                    {/* Icon - No background, bigger size */}
+                    {/* Icon - Fixed sizing and quality */}
                     <div className="flex justify-start">
                       <Image
                         src={sdg.icon}
                         alt={`${sdg.title} icon`}
-                        width={48}
-                        height={48}
-                        className="w-22 h-22"
+                        width={80}
+                        height={80}
+                        className="w-20 h-20 object-contain"
+                        quality={100}
+                        priority={sdg.id <= 2}
                       />
                     </div>
 
