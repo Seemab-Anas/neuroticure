@@ -2,7 +2,6 @@
 import React from 'react'
 import Image from 'next/image'
 import PageHeader from '@/components/PageHeader'
-import PageLoaderGSAP from '@/components/PageLoaderGSAP'
 import { useState, useEffect } from 'react';
 
 const Page = () => {

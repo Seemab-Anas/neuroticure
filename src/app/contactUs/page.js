@@ -4,7 +4,6 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import PageHeader from '@/components/PageHeader';
-import PageLoaderGSAP from '@/components/PageLoaderGSAP';
 
 export default function ContactUs() {
 
