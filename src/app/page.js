@@ -21,7 +21,6 @@ export default function Page() {
 
   return (
     <>
-      
       {showLoader && (
         <PageLoaderGSAP 
           pageName="home" 
