@@ -23,13 +23,14 @@ const PageLoaderGSAP = ({ pageName, onComplete, assetsLoaded }) => {
   // Handle loader completion when assets are loaded
   useEffect(() => {
     if (shouldShow && assetsLoaded) {
-      // Add a minimum display time for the loader (e.g., 1.5 seconds)
-      const minDisplayTime = 1500;
+      // Ensure minimum display time so users can see the loader
+      const minDisplayTime = 2000; // 2 seconds minimum
+      const animationDuration = 1200; // 1.2 seconds for the exit animation
       const startTime = Date.now();
       
       const hideLoader = () => {
         const elapsedTime = Date.now() - startTime;
-        const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+        const remainingTime = Math.max(500, minDisplayTime - elapsedTime); // At least 500ms delay
         
         setTimeout(() => {
           if (loaderRef.current) {
@@ -39,7 +40,10 @@ const PageLoaderGSAP = ({ pageName, onComplete, assetsLoaded }) => {
               ease: 'power2.inOut',
               borderRadius: '50%',
               onComplete: () => {
-                if (onComplete) onComplete();
+                // Ensure the animation is visually complete before calling onComplete
+                setTimeout(() => {
+                  if (onComplete) onComplete();
+                }, 100); // Small delay to ensure visual completion
               },
             });
           }

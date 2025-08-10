@@ -68,17 +68,15 @@ export default function ClientWrapper({ children }) {
   }, []);
 
   const handleLoadingComplete = () => {
-    // Only hide loader when both loader animation is done AND assets are loaded
-    if (assetsLoaded) {
-      setIsLoading(false);
-    }
+    // Animation completed, now hide the loader
+    setIsLoading(false);
   };
 
-  // If assets are loaded but loader hasn't completed yet, wait for loader
+  // Trigger loader completion when assets are loaded
   useEffect(() => {
-    if (assetsLoaded && !isLoading) {
-      // Assets loaded and loader already completed
-      return;
+    if (assetsLoaded && isLoading) {
+      // Assets are loaded, signal the loader to start its exit animation
+      // The PageLoaderGSAP component will handle the animation and call handleLoadingComplete when done
     }
   }, [assetsLoaded, isLoading]);
 
