@@ -5,65 +5,55 @@ import Image from 'next/image';
 const PageLoaderGSAP = ({ pageName, onComplete }) => {
   const loaderRef = useRef(null);
   const logoRef = useRef(null);
-  const [mounted, setMounted] = useState(false);
+  const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Check if loader has been shown before in this session
+    const hasShownLoader = sessionStorage.getItem('loaderShown');
     
-    // Animate logo entrance
-    if (logoRef.current) {
-      gsap.fromTo(logoRef.current, 
-        { scale: 0.5, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.7)' }
-      );
-    }
-
-    // Set minimum loading time
-    const minLoadingTime = 2000; // 2 seconds minimum
-    const startTime = Date.now();
-
-    const handleComplete = () => {
-      const elapsedTime = Date.now() - startTime;
-      const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
-
-      setTimeout(() => {
-        if (loaderRef.current) {
-          gsap.to(loaderRef.current, {
-            y: '-100%',
-            duration: 1.2,
-            ease: 'power2.inOut',
-            borderRadius: '50%',
-            onComplete: () => {
-              sessionStorage.setItem('loaderShown', 'true');
-              if (onComplete) onComplete();
-            },
-          });
-        }
-      }, remainingTime);
-    };
-
-    // Check if page is already loaded
-    if (document.readyState === 'complete') {
-      handleComplete();
-    } else {
-      window.addEventListener('load', handleComplete);
-      // Fallback timeout
-      const fallbackTimeout = setTimeout(handleComplete, 5000);
+    if (!hasShownLoader) {
+      setShouldShow(true);
+      sessionStorage.setItem('loaderShown', 'true');
       
-      return () => {
-        window.removeEventListener('load', handleComplete);
-        clearTimeout(fallbackTimeout);
+      // Hide loader when page is loaded
+      const handleLoad = () => {
+        gsap.to(loaderRef.current, {
+          y: '-100%',
+          duration: 1.2,
+          ease: 'power2.inOut',
+          borderRadius: '50%', // Full rounded border radius
+          onComplete: () => {
+            if (onComplete) onComplete();
+          },
+        });
       };
+
+      // Check if page is already loaded
+      if (document.readyState === 'complete') {
+        handleLoad();
+      } else {
+        // Listen for load event
+        window.addEventListener('load', handleLoad);
+      }
+
+      return () => {
+        window.removeEventListener('load', handleLoad);
+      };
+    } else {
+      // If loader has been shown before, immediately call onComplete
+      if (onComplete) onComplete();
     }
   }, [onComplete]);
 
-  if (!mounted) {
+  // Don't render loader if it shouldn't show
+  if (!shouldShow) {
     return null;
   }
 
   return (
     <div ref={loaderRef} className="loading-screen">
       <div className="logo-container">
+        {/* Logo directly visible without any covering elements */}
         <div ref={logoRef} className="logo-wrapper">
           <Image 
             src="/logo.png" 
@@ -76,6 +66,7 @@ const PageLoaderGSAP = ({ pageName, onComplete }) => {
         </div>
       </div>
 
+      {/* Loading progress indicator */}
       <div className="loading-indicator">
         <div className="progress-bar"></div>
       </div>

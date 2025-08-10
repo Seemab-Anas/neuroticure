@@ -25,19 +25,3 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
-
-/* Add to your global.css */
-.page-loading {
-  overflow: hidden;
-}
-
-.page-content {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.page-content.loaded {
-  opacity: 1;
-}

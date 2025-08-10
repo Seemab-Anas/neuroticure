@@ -3,6 +3,7 @@ import "./globals.css";
 import SmoothScroll from '@/components/SmoothScroll';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ClientWrapper from '@/components/ClientWrapper';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -22,11 +23,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={openSans.variable}>
       <body className="font-sans" style={{ backgroundColor: '#FAF6E9', fontFamily: 'var(--font-open-sans)' }}>
-        <SmoothScroll>
-          <Navbar />
-          {children}
-          <Footer />
-        </SmoothScroll>
+        <ClientWrapper>
+          <SmoothScroll>
+            <Navbar />
+            {children}
+            <Footer />
+          </SmoothScroll>
+        </ClientWrapper>
       </body>
     </html>
   );
