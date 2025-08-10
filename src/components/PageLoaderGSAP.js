@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
 
-const PageLoaderGSAP = ({ pageName, onComplete }) => {
+const PageLoaderGSAP = ({ pageName, onComplete, assetsLoaded }) => {
   const loaderRef = useRef(null);
   const logoRef = useRef(null);
   const [shouldShow, setShouldShow] = useState(false);
@@ -14,36 +14,41 @@ const PageLoaderGSAP = ({ pageName, onComplete }) => {
     if (!hasShownLoader) {
       setShouldShow(true);
       sessionStorage.setItem('loaderShown', 'true');
-      
-      // Hide loader when page is loaded
-      const handleLoad = () => {
-        gsap.to(loaderRef.current, {
-          y: '-100%',
-          duration: 1.2,
-          ease: 'power2.inOut',
-          borderRadius: '50%', // Full rounded border radius
-          onComplete: () => {
-            if (onComplete) onComplete();
-          },
-        });
-      };
-
-      // Check if page is already loaded
-      if (document.readyState === 'complete') {
-        handleLoad();
-      } else {
-        // Listen for load event
-        window.addEventListener('load', handleLoad);
-      }
-
-      return () => {
-        window.removeEventListener('load', handleLoad);
-      };
     } else {
       // If loader has been shown before, immediately call onComplete
       if (onComplete) onComplete();
     }
   }, [onComplete]);
+
+  // Handle loader completion when assets are loaded
+  useEffect(() => {
+    if (shouldShow && assetsLoaded) {
+      // Add a minimum display time for the loader (e.g., 1.5 seconds)
+      const minDisplayTime = 1500;
+      const startTime = Date.now();
+      
+      const hideLoader = () => {
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+        
+        setTimeout(() => {
+          if (loaderRef.current) {
+            gsap.to(loaderRef.current, {
+              y: '-100%',
+              duration: 1.2,
+              ease: 'power2.inOut',
+              borderRadius: '50%',
+              onComplete: () => {
+                if (onComplete) onComplete();
+              },
+            });
+          }
+        }, remainingTime);
+      };
+
+      hideLoader();
+    }
+  }, [shouldShow, assetsLoaded, onComplete]);
 
   // Don't render loader if it shouldn't show
   if (!shouldShow) {
