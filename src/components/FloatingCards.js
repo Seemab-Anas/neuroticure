@@ -131,19 +131,19 @@ export default function FloatingCards() {
             className="floating-card absolute w-[343px] top-[189px] left-[0px] z-10 hidden md:block"
             data-scroll-speed="0.3"
           >
-            <Image src="/card1.svg" alt="Feature card" width={343} height={200} />
+            <Image src="/card1.webp" alt="Feature card" width={343} height={200} />
           </div>
           <div 
             ref={(el) => addToRefs(el, 1)}
             className="floating-card absolute w-[343px] top-[325px] left-[80px] z-10 hidden md:block"
-            data-scroll-speed="0.5"
+            data-scroll-speed="1.5"
           >
-            <Image src="/card2.svg" alt="Feature card" width={343} height={200} />
+            <Image src="/card2.webp" alt="Feature card" width={343} height={200} />
           </div>
           <div 
             ref={(el) => addToRefs(el, 2)}
             className="floating-card absolute w-[273px] top-[461px] left-[48px] z-10 hidden md:block"
-            data-scroll-speed="0.7"
+            data-scroll-speed="1.2"
           >
             <Image src="/card3.webp" alt="Feature card" width={273} height={200} />
           </div>
@@ -152,16 +152,16 @@ export default function FloatingCards() {
           <div 
             ref={(el) => addToRefs(el, 3)}
             className="floating-card absolute w-[343px] top-[312px] right-[0px] z-10 hidden md:block"
-            data-scroll-speed="0.4"
+            data-scroll-speed="0.6"
           >
-            <Image src="/card4.svg" alt="Feature card" width={343} height={200} />
+            <Image src="/card4.webp" alt="Feature card" width={343} height={200} />
           </div>
           <div 
             ref={(el) => addToRefs(el, 4)}
             className="floating-card absolute w-[343px] top-[426px] right-[80px] z-10 hidden md:block"
-            data-scroll-speed="0.6"
+            data-scroll-speed="0.8"
           >
-            <Image src="/card5.svg" alt="Feature card" width={343} height={200} />
+            <Image src="/card5.webp" alt="Feature card" width={343} height={200} />
           </div>
 
           {/* Center mobile image - always visible */}

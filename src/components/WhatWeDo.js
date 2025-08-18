@@ -15,28 +15,28 @@ export default function WhatWeDo() {
     {
       title: "AI-Powered Diagnostics",
       description: "Our smart tools use AI to provide quick, reliable assessments of mental health conditions, ensuring early detection and intervention.",
-      image: "/whatWeDo/card1.png",
+      image: "/whatWeDo/card1.webp",
       innerImage: "/whatWeDo/card1inner.png",
       icon: "/whatWeDo/icon1.png"
     },
     {
       title: "Therapeutic Solutions",
       description: "We offer evidence-based therapeutic exercises and self-help resources tailored to individual needs for a holistic mental health approach.",
-      image: "/whatWeDo/card2.png",
+      image: "/whatWeDo/card2.webp",
       innerImage: "/whatWeDo/card2inner.png",
       icon: "/whatWeDo/icon2.png"
     },
     {
       title: "Professional Guidance",
       description: "Connecting users with certified therapists and counselors for personalized care and professional support.",
-      image: "/whatWeDo/card3.png",
+      image: "/whatWeDo/card3.webp",
       innerImage: "/whatWeDo/card3inner.png",
       icon: "/whatWeDo/icon3.svg"
     },
     {
       title: "Mood Tracking",
       description: "Monitor your emotional well-being with intelligent mood tracking that helps identify patterns and suggests personalized interventions.",
-      image: "/whatWeDo/card4.png",
+      image: "/whatWeDo/card4.webp",
       innerImage: "/whatWeDo/card4inner.png",
       icon: "/whatWeDo/icon4.svg"
     }
@@ -207,21 +207,17 @@ export default function WhatWeDo() {
                 id="small-decorative-current" 
                 src="/whatWeDo/card1inner.png" 
                 alt="Current small decorative image" 
-                width={500}
-                height={300}
                 className="w-full h-auto"
               />
               <img 
                 ref={smallDecorativeNextRef}
                 id="small-decorative-next" 
                 alt="Next small decorative image" 
-                width={500}
-                height={300}
                 className="w-full h-auto absolute top-0 left-0 opacity-0"
               />
             </div>
             {/* Main card image */}
-            <div className="rounded-[32px] overflow-hidden transition-transform duration-300 w-full">
+            <div className="rounded-[32px] overflow-hidden transition-transform duration-300 w-full relative">
               <img 
                 ref={dynamicImageRef}
                 id="dynamic-image" 
@@ -229,7 +225,7 @@ export default function WhatWeDo() {
                 alt="Dynamic image" 
                 width={600}
                 height={450}
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-cover"
               />
               <img 
                 ref={nextImageRef}
@@ -237,7 +233,7 @@ export default function WhatWeDo() {
                 alt="Next image" 
                 width={600}
                 height={450}
-                className="w-full h-auto object-contain absolute top-0 left-0 opacity-0"
+                className="w-full h-auto object-cover absolute top-0 left-0 opacity-0"
               />
             </div>
           </div>
